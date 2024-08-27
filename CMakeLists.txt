@@ -9,4 +9,7 @@ add_executable(wfcpp main.cpp
         TileSheet.cpp
         TileSheet.h
         Dimensions2D.h
-        GridPosition.h)
+        GridPosition.h
+        stb/stb.cpp
+        stb/Image.cpp
+        stb/Image.h)

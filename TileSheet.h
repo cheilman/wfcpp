@@ -9,6 +9,7 @@
 
 class TileSheet {
 public:
+  TileSheet(std::string filename,
 protected:
 };
 
