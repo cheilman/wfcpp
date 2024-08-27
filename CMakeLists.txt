@@ -3,4 +3,10 @@ project(wfcpp)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(wfcpp main.cpp)
+add_executable(wfcpp main.cpp
+        TileInfo.cpp
+        TileInfo.h
+        TileSheet.cpp
+        TileSheet.h
+        Dimensions2D.h
+        GridPosition.h)
