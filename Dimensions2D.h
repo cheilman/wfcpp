@@ -4,15 +4,20 @@
 
 #ifndef DIMENSIONS2D_H
 #define DIMENSIONS2D_H
-
-
+#include <ostream>
 
 class Dimensions2D {
 public:
-  Dimensions2D(int width, int height) : _width(width), _height(height) {}
+  Dimensions2D(const int width, const int height) : _width(width), _height(height) {}
 
-  int width() const { return _width; }
-  int height() const { return _height; }
+  int width() const { return this->_width; }
+  int height() const { return this->_height; }
+  int area() const { return this->_width * this->_height; }
+
+  friend std::ostream& operator<<(std::ostream& os, const Dimensions2D& dims)
+  {
+    return os << dims.width() << "x" << dims.height();
+  }
 
 protected:
   int _width;
