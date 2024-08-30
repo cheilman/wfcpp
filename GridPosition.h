@@ -7,22 +7,19 @@
 #include <ostream>
 
 class GridPosition {
-public:
-  GridPosition(const int x, const int y) : _x(x), _y(y) {}
+   public:
+    GridPosition(const int x, const int y) : _x(x), _y(y) {}
 
-  int x() const { return _x; }
-  int y() const { return _y; }
+    int x() const { return _x; }
+    int y() const { return _y; }
 
-  friend std::ostream& operator<<(std::ostream& os, const GridPosition& pos)
-  {
-    return os << "(" << pos.x() << ", " << pos.y() << ")";
-  }
+    friend std::ostream& operator<<(std::ostream& os, const GridPosition& pos) {
+        return os << "(" << pos.x() << ", " << pos.y() << ")";
+    }
 
-protected:
-  int _x;
-  int _y;
+   protected:
+    int _x;
+    int _y;
 };
 
-
-
-#endif //GRID_POSITION_H
+#endif  // GRID_POSITION_H

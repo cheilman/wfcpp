@@ -5,14 +5,10 @@
 #ifndef TILESHEET_H
 #define TILESHEET_H
 
-
-
 class TileSheet {
-public:
-  // TileSheet(std::string filename,
-protected:
+   public:
+    // TileSheet(std::string filename,
+   protected:
 };
 
-
-
-#endif //TILESHEET_H
+#endif  // TILESHEET_H

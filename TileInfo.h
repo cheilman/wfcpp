@@ -8,16 +8,16 @@
 #include <string>
 
 class TileInfo {
-public:
+   public:
     explicit TileInfo(std::string name);
     virtual ~TileInfo() = default;
 
     std::string name() const { return this->_name; }
     int id() const { return this->_id; }
 
-protected:
+   protected:
     int _id;
     std::string _name;
 };
 
-#endif //TILEINFO_H
+#endif  // TILEINFO_H
