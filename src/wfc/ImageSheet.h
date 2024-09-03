@@ -7,7 +7,7 @@
 #include <string>
 
 #include "Dimensions2D.h"
-#include "stb/Image.h"
+#include "../stb/Image.h"
 
 class ImageSheet {
    public:

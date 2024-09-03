@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "ImageSheet.h"
+#include "wfc/ImageSheet.h"
 #include "stb/Image.h"
 
 int main() {

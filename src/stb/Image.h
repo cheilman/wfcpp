@@ -6,8 +6,8 @@
 #define IMAGE_H
 #include <memory>
 
-#include "../Dimensions2D.h"
-#include "../GridPosition.h"
+#include "../wfc/Dimensions2D.h"
+#include "../wfc/GridPosition.h"
 
 class Image {
    public:

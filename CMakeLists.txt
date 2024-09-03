@@ -4,14 +4,14 @@ project(wfcpp)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(wfcpp
-        main.cpp
-        TileInfo.cpp
-        TileInfo.h
-        ImageSheet.cpp
-        ImageSheet.h
-        Dimensions2D.h
-        GridPosition.h
-        stb/stb.cpp
-        stb/Image.cpp
-        stb/Image.h
+        src/main.cpp
+        src/wfc/TileInfo.cpp
+        src/wfc/TileInfo.h
+        src/wfc/ImageSheet.cpp
+        src/wfc/ImageSheet.h
+        src/wfc/Dimensions2D.h
+        src/wfc/GridPosition.h
+        src/stb/stb.cpp
+        src/stb/Image.cpp
+        src/stb/Image.h
 )
