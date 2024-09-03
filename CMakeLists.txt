@@ -14,4 +14,8 @@ add_executable(wfcpp
         src/stb/stb.cpp
         src/stb/Image.cpp
         src/stb/Image.h
+        src/wfc/Tile.cpp
+        src/wfc/Tile.h
+        src/wfc/TileSet.cpp
+        src/wfc/TileSet.h
 )
