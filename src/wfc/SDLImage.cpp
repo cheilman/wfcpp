@@ -4,35 +4,33 @@
 
 #include "SDLImage.h"
 
-#include <SDL3_image/SDL_image.h>
 #include <SDL3/SDL_render.h>
+#include <SDL3_image/SDL_image.h>
 
 #include <iostream>
 
-SDLImage::SDLImage(SDL_Surface* surface)
-     : _surface(surface) {}
+SDLImage::SDLImage(SDL_Surface *surface) : _surface(surface) {}
 
-SDLImage:: ~SDLImage() {
-     if (this->_surface) {
-         SDL_DestroySurface(this->_surface);
-         this->_surface = nullptr;
-     }
- }
+SDLImage::~SDLImage() {
+    if (this->_surface) {
+        SDL_DestroySurface(this->_surface);
+        this->_surface = nullptr;
+    }
+}
 
- std::unique_ptr<Image> SDLImage::load(const std::string &path) {
-     SDL_Surface* surface = IMG_Load(path.c_str());
+std::unique_ptr<Image> SDLImage::load(const std::string &path) {
+    SDL_Surface *surface = IMG_Load(path.c_str());
     if (surface == nullptr) {
         std::cerr << "Error reading file from " << path << ". Err: " << SDL_GetError() << std::endl;
         return nullptr;
     }
 
     return std::make_unique<SDLImage>(surface);
- }
+}
 
- void SDLImage::save_png(const std::string &path) const {
+void SDLImage::save_png(const std::string &path) const {
     if (!IMG_SavePNG(this->_surface, path.c_str())) {
-        std::cerr << "Error saving file to " << path << ". Err: " << SDL_GetError()<<std::endl;
-
+        std::cerr << "Error saving file to " << path << ". Err: " << SDL_GetError() << std::endl;
     }
 }
 
@@ -40,7 +38,7 @@ std::unique_ptr<Image> SDLImage::cropy(GridPosition ul_corner, GridPosition br_c
     int width = br_corner.x() - ul_corner.x();
     int height = br_corner.y() - ul_corner.y();
 
-    SDL_Surface* dest = SDL_CreateSurface(width, height, this->surface()->format);
+    SDL_Surface *dest = SDL_CreateSurface(width, height, this->surface()->format);
     if (dest == nullptr) {
         std::cerr << "Error creating surface for cropy: " << SDL_GetError() << std::endl;
         return nullptr;

@@ -120,10 +120,8 @@ void STBImage::paste(const Image &src, GridPosition dest_ul_corner, bool with_al
 }
 
 void STBImage::paste(const STBImage &src, GridPosition dest_ul_corner, bool with_alpha) {
-    const int src_width = std::min(src.width(),
-                                   this->width() - dest_ul_corner.x());
-    const int src_height = std::min(src.height(),
-                                    this->height() - dest_ul_corner.y());
+    const int src_width = std::min(src.width(), this->width() - dest_ul_corner.x());
+    const int src_height = std::min(src.height(), this->height() - dest_ul_corner.y());
     assert(this->channels() == src.channels());
 
     for (int dy = 0; dy < src_height; dy++) {

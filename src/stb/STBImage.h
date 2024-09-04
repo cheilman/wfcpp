@@ -35,7 +35,8 @@ class STBImage : public Image {
    protected:
     int stride() const { return this->width() * this->_channels * sizeof(PixelComponentType); }
 
-    void write_line(GridPosition dest_pos, const STBImage &source, GridPosition src_pos, int line_width, bool with_alpha);
+    void write_line(GridPosition dest_pos, const STBImage &source, GridPosition src_pos, int line_width,
+                    bool with_alpha);
 
     const PixelComponentType *data() const { return this->_data; }
     const PixelComponentType *data_at(GridPosition pos) const;

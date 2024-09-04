@@ -29,9 +29,7 @@ class Image {
 
     virtual void display_on(SDL_Renderer &renderer) const {}
 
-    friend std::ostream &operator<<(std::ostream &os, const Image &img) {
-        return os << "Image(" << img.size() << ")";
-    }
+    friend std::ostream &operator<<(std::ostream &os, const Image &img) { return os << "Image(" << img.size() << ")"; }
 };
 
 #endif  // IMAGE_H

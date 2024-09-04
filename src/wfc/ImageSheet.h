@@ -5,9 +5,9 @@
 #ifndef IMAGESHEET_H
 #define IMAGESHEET_H
 #include <string>
-#include "Image.h"
 
 #include "Dimensions2D.h"
+#include "Image.h"
 
 class ImageSheet {
    public:

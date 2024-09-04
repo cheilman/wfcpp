@@ -51,7 +51,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
     state->window = SDL_CreateWindowWithProperties(props);
     SDL_DestroyProperties(props);
     if (!state->window) {
-        std::cerr << "Failed to create SDL window: " << SDL_GetError()  << std::endl;
+        std::cerr << "Failed to create SDL window: " << SDL_GetError() << std::endl;
         delete state;
         *appstate = nullptr;
         SDL_QuitSubSystem(SDL_INIT_VIDEO);
@@ -60,7 +60,7 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
 
     state->renderer = SDL_CreateRenderer(state->window, "software");
     if (!state->renderer) {
-        std::cerr << "Failed to create SDL renderer: " << SDL_GetError()  << std::endl;
+        std::cerr << "Failed to create SDL renderer: " << SDL_GetError() << std::endl;
         delete state;
         *appstate = nullptr;
         SDL_QuitSubSystem(SDL_INIT_VIDEO);
