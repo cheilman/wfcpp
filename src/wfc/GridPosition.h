@@ -13,6 +13,8 @@ class GridPosition {
     int x() const { return _x; }
     int y() const { return _y; }
 
+    SDL_Rect to_rect() const { return SDL_Rect{this->_x, this->_y, 0, 0}; }
+
     friend std::ostream& operator<<(std::ostream& os, const GridPosition& pos) {
         return os << "(" << pos.x() << ", " << pos.y() << ")";
     }

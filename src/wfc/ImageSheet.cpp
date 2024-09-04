@@ -6,13 +6,15 @@
 
 #include <cassert>
 
+#include "SDLImage.h"
+
 ImageSheet::ImageSheet(std::unique_ptr<Image> sheet, Dimensions2D subimage_size)
     : _sheet(std::move(sheet)), _subimage_size(subimage_size) {
     assert(_sheet != nullptr);
 }
 
 std::unique_ptr<ImageSheet> ImageSheet::load(const std::string &filename, Dimensions2D subimage_size) {
-    auto img = Image::load(filename);
+    auto img = SDLImage::load(filename);
     if (img == nullptr) {
         return nullptr;
     }

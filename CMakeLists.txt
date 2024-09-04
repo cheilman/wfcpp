@@ -52,12 +52,15 @@ add_executable(wfcpp
         src/wfc/Dimensions2D.h
         src/wfc/GridPosition.h
         src/stb/stb.cpp
-        src/stb/Image.cpp
-        src/stb/Image.h
+        src/stb/STBImage.cpp
+        src/stb/STBImage.h
         src/wfc/Tile.cpp
         src/wfc/Tile.h
         src/wfc/TileSet.cpp
         src/wfc/TileSet.h
+        src/wfc/SDLImage.cpp
+        src/wfc/SDLImage.h
+        src/wfc/Image.h
 )
 
 # Link SDL3 and SDL3_image to our demo app
