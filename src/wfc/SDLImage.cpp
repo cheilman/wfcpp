@@ -68,7 +68,7 @@ SDL_Texture *SDLImage::to_texture(SDL_Renderer &renderer) const {
 }
 
 std::pair<SDL_Window*, SDL_Renderer*> SDLImage::display() const  {
-    int scale = 4;
+    int scale = 1024 / this->height();
 
     SDL_PropertiesID props = SDL_CreateProperties();
     SDL_SetStringProperty(props, SDL_PROP_WINDOW_CREATE_TITLE_STRING, "An image!");
