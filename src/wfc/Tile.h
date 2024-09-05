@@ -4,7 +4,7 @@
 
 #ifndef TILE_H
 #define TILE_H
-#include "../stb/STBImage.h"
+#include "Image.h"
 #include "TileInfo.h"
 
 class Tile {

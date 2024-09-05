@@ -5,7 +5,6 @@
 #include <SDL3/SDL_render.h>
 #include <SDL3/SDL_video.h>
 
-#include "stb/STBImage.h"
 #include "wfc/ImageSheet.h"
 
 typedef struct AppState {

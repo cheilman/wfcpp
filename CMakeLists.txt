@@ -51,9 +51,6 @@ add_executable(wfcpp
         src/wfc/ImageSheet.h
         src/wfc/Dimensions2D.h
         src/wfc/GridPosition.h
-        src/stb/stb.cpp
-        src/stb/STBImage.cpp
-        src/stb/STBImage.h
         src/wfc/Tile.cpp
         src/wfc/Tile.h
         src/wfc/TileSet.cpp
