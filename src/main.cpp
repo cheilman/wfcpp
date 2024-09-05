@@ -5,21 +5,28 @@
 #include <SDL3/SDL_render.h>
 #include <SDL3/SDL_video.h>
 
+#include <vector>
+
 #include "wfc/ImageSheet.h"
 
 typedef struct AppState {
-    SDL_Window *window;
-    SDL_Renderer *renderer;
+    std::vector<std::pair<SDL_Window *, SDL_Renderer *>> windows_and_renders;
     std::unique_ptr<ImageSheet> imageSheet;
 
-    AppState() : window(nullptr), renderer(nullptr), imageSheet(nullptr) {}
+    AppState() : imageSheet(nullptr) {}
 
     ~AppState() {
-        if (renderer) {
-            SDL_DestroyRenderer(renderer);
-        }
-        if (window) {
-            SDL_DestroyWindow(window);
+        for (auto wr : windows_and_renders) {
+            auto window = wr.first;
+            auto render = wr.second;
+
+            if (window != nullptr) {
+                SDL_DestroyWindow(window);
+            }
+
+            if (render != nullptr) {
+                SDL_DestroyRenderer(render);
+            }
         }
     }
 } AppState;
@@ -43,33 +50,11 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
         return SDL_APP_FAILURE;
     }
 
-    SDL_PropertiesID props = SDL_CreateProperties();
-    SDL_SetStringProperty(props, SDL_PROP_WINDOW_CREATE_TITLE_STRING, "An image!");
-    SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_WIDTH_NUMBER, state->imageSheet->sheet().width() * 4);
-    SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_HEIGHT_NUMBER, state->imageSheet->sheet().height() * 4);
-    state->window = SDL_CreateWindowWithProperties(props);
-    SDL_DestroyProperties(props);
-    if (!state->window) {
-        std::cerr << "Failed to create SDL window: " << SDL_GetError() << std::endl;
-        delete state;
-        *appstate = nullptr;
-        SDL_QuitSubSystem(SDL_INIT_VIDEO);
-        return SDL_APP_FAILURE;
-    }
+    state->windows_and_renders.emplace_back(state->imageSheet->sheet().display());
 
-    state->renderer = SDL_CreateRenderer(state->window, "software");
-    if (!state->renderer) {
-        std::cerr << "Failed to create SDL renderer: " << SDL_GetError() << std::endl;
-        delete state;
-        *appstate = nullptr;
-        SDL_QuitSubSystem(SDL_INIT_VIDEO);
-        return SDL_APP_FAILURE;
-    }
+    auto shroom = state->imageSheet->sheet().cropy(GridPosition(16 * 8, 16 * 5), Dimensions2D(16, 16));
 
-    SDL_SetRenderDrawColor(state->renderer, 0, 0, 0, 255);
-    SDL_RenderClear(state->renderer);
-    state->imageSheet->sheet().display_on(*state->renderer);
-    SDL_RenderPresent(state->renderer);
+    state->windows_and_renders.emplace_back(shroom->display());
 
     return SDL_APP_CONTINUE;
 }
@@ -83,6 +68,10 @@ SDL_AppResult SDL_AppEvent(void *appstate, SDL_Event *event) {
     auto state = static_cast<AppState *>(appstate);
 
     if (event->type == SDL_EVENT_QUIT) {
+        return SDL_APP_SUCCESS;
+    }
+
+    if (event->type == SDL_EVENT_WINDOW_CLOSE_REQUESTED) {
         return SDL_APP_SUCCESS;
     }
 

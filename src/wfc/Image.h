@@ -27,6 +27,7 @@ class Image {
 
     virtual void paste(const Image &src, GridPosition dest_ul_corner, bool with_alpha = false) = 0;
 
+    virtual std::pair<SDL_Window*, SDL_Renderer*> display() const { return std::pair<SDL_Window*, SDL_Renderer*>(nullptr, nullptr); }
     virtual void display_on(SDL_Renderer &renderer) const {}
 
     friend std::ostream &operator<<(std::ostream &os, const Image &img) { return os << "Image(" << img.size() << ")"; }

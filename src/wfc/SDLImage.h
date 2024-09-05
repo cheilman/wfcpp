@@ -29,6 +29,7 @@ class SDLImage : public Image {
     virtual void paste(const SDLImage &src, GridPosition dest_ul_corner, bool with_alpha = false);
     void paste(const Image &src, GridPosition dest_ul_corner, bool with_alpha = false) override;
 
+    std::pair<SDL_Window*, SDL_Renderer*> display() const override;
     void display_on(SDL_Renderer &renderer) const override;
 
     friend std::ostream &operator<<(std::ostream &os, const SDLImage &img) {

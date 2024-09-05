@@ -67,6 +67,38 @@ SDL_Texture *SDLImage::to_texture(SDL_Renderer &renderer) const {
     return tex;
 }
 
+std::pair<SDL_Window*, SDL_Renderer*> SDLImage::display() const  {
+    int scale = 4;
+
+    SDL_PropertiesID props = SDL_CreateProperties();
+    SDL_SetStringProperty(props, SDL_PROP_WINDOW_CREATE_TITLE_STRING, "An image!");
+    SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_WIDTH_NUMBER, this->width() * scale);
+    SDL_SetNumberProperty(props, SDL_PROP_WINDOW_CREATE_HEIGHT_NUMBER, this->height() * scale);
+
+    auto window = SDL_CreateWindowWithProperties(props);
+    SDL_DestroyProperties(props);
+
+    if (!window) {
+        std::cerr << "Failed to create SDL window: " << SDL_GetError() << std::endl;
+        return std::pair<SDL_Window*, SDL_Renderer*>(nullptr, nullptr);
+    }
+
+    auto renderer = SDL_CreateRenderer(window, "software");
+    if (!renderer) {
+        std::cerr << "Failed to create SDL renderer: " << SDL_GetError() << std::endl;
+        SDL_DestroyWindow(window);
+        return std::pair<SDL_Window*, SDL_Renderer*>(nullptr, nullptr);
+    }
+
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    SDL_RenderClear(renderer);
+    this->display_on(*renderer);
+    SDL_RenderPresent(renderer);
+
+    return std::pair(window, renderer);
+}
+
+
 void SDLImage::display_on(SDL_Renderer &renderer) const {
     auto tex = this->to_texture(renderer);
     if (tex == nullptr) {
