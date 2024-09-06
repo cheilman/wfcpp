@@ -4,6 +4,7 @@
 
 #ifndef IMAGESHEET_H
 #define IMAGESHEET_H
+#include <memory>
 #include <string>
 
 #include "Dimensions2D.h"

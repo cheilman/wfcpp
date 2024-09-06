@@ -6,6 +6,7 @@
 #define TILE_H
 #include "Image.h"
 #include "TileInfo.h"
+#include <memory>
 
 class Tile {
    public:

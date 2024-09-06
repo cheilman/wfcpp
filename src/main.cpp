@@ -36,10 +36,10 @@ SDL_AppResult SDL_AppInit(void **appstate, int argc, char **argv) {
     *appstate = state;
 
     std::cout << "Hello, World!  From inside SDL_AppInit!" << std::endl;
-    std::string prj_root = "/Users/cheilman/CLionProjects/wfcpp";
-    std::string out_root = "/Users/cheilman/";
-    // std::string prj_root = "C:/Users/chris/ClionProjects/wfcpp";
-    // std::string out_root = "C:/Users/chris/Desktop";
+    // std::string prj_root = "/Users/cheilman/CLionProjects/wfcpp";
+    // std::string out_root = "/Users/cheilman/";
+    std::string prj_root = "C:/Users/chris/ClionProjects/wfcpp";
+    std::string out_root = "C:/Users/chris/Desktop";
 
     std::string tiles_path = prj_root + "/resources/tilesets/mochii-plains/tilesetPlains.png";
 

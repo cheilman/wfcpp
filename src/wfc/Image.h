@@ -5,6 +5,7 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 #include <SDL3/SDL_render.h>
+#include <memory>
 
 #include "Dimensions2D.h"
 #include "GridPosition.h"

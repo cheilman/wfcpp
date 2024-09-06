@@ -5,6 +5,7 @@
 #include "ImageSheet.h"
 
 #include <cassert>
+#include <memory>
 
 #include "SDLImage.h"
 
